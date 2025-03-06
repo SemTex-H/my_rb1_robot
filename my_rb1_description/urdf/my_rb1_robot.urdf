@@ -192,5 +192,25 @@
         </collision>
     </link>
 
+    <!-- Gazebo -->
+    <gazebo reference="base_link">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="right_wheel">
+        <material>Gazebo/Red</material>
+    </gazebo>
+    <gazebo reference="left_wheel">
+        <material>Gazebo/Red</material>
+    </gazebo>
+    <gazebo reference="front_caster">
+        <material>Gazebo/Green</material>
+    </gazebo>
+    <gazebo reference="back_caster">
+        <material>Gazebo/Green</material>
+    </gazebo>
+    <gazebo reference="front_laser">
+        <material>Gazebo/Yellow</material>
+    </gazebo>
+    
 
 </robot>
