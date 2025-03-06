@@ -14,11 +14,12 @@
         <color rgba="1 0 0 1"/>
     </material>
 
-    <link name="base_footprint"/>
+    <link name="base_footprint">
+    </link>
 
 
     <joint name="base_footprint_base_link_joint" type="fixed">
-        <origin rpy="0 0 0" xyz="0 0 0" />
+        <origin rpy="0 0 0" xyz="0 0 0.20" />
         <child link="base_link" />
         <parent link="base_footprint" />
     </joint>
@@ -190,5 +191,6 @@
             </geometry>
         </collision>
     </link>
+
 
 </robot>
