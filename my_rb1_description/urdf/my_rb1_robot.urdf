@@ -1,0 +1,194 @@
+<?xml version="1.0" ?>
+
+<robot name="robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <material name="Black">
+        <color rgba="0 0 0 1"/>
+    </material>
+    <material name="Blue">
+        <color rgba="0 0 1 0.3"/>
+    </material>
+    <material name="Green">
+        <color rgba="0 1 0 1"/>
+    </material>
+    <material name="Red">
+        <color rgba="1 0 0 1"/>
+    </material>
+
+    <link name="base_footprint"/>
+
+
+    <joint name="base_footprint_base_link_joint" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <child link="base_link" />
+        <parent link="base_footprint" />
+    </joint>
+    <link name="base_link">
+        <inertial>
+            <mass value="22" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <inertia ixx="0.5087499999999999" ixy="0" ixz="0" iyy="0.5087499999999999" iyz="0" izz="0.6875" />
+        </inertial>
+
+        <collision>
+            <geometry>
+                <cylinder length="0.3" radius="0.25"/>
+            </geometry>
+        </collision>
+
+        <visual>
+            <geometry>
+                <cylinder length="0.3" radius="0.25"/>
+            </geometry>
+            <material name="Blue"/>
+        </visual>
+    </link>
+
+
+    <joint name="base_link_right_wheel_joint" type="continuous">
+        <origin rpy="0 0 0" xyz="0 -0.2 -0.15" />
+        <child link="right_wheel" />
+        <parent link="base_link" />
+        <axis rpy="0 0 0" xyz="0 1 0" />
+        <limit effort="10000" velocity="1000" />
+    </joint>
+    <link name="right_wheel">
+        <inertial>
+            <mass value="2.125" />
+            <origin xyz="0 0 0"/>
+            <inertia ixx="0.00023125" ixy="0" ixz="0" iyy="0.00023125" iyz="0" izz="0.0003125"/>
+        </inertial>
+
+        <collision>
+            <origin xyz="0 0 0" rpy="-1.5708 0 0" />
+            <geometry>
+                <cylinder length="0.03" radius="0.025"/>
+            </geometry>
+        </collision>
+        <visual>
+            <origin xyz="0 0 0" rpy="-1.5708 0 0" />
+            <geometry>
+                <cylinder length="0.03" radius="0.025"/>
+            </geometry>
+            <material name="Red"/>
+        </visual>
+    </link>
+
+
+    <joint name="base_link_left_wheel_joint" type="continuous">
+        <origin rpy="0 0 0" xyz="0 0.2 -0.15" />
+        <child link="left_wheel" />
+        <parent link="base_link" />
+        <axis rpy="0 0 0" xyz="0 1 0" />
+        <limit effort="10000" velocity="1000" />
+    </joint>
+    <link name="left_wheel">
+        <inertial>
+            <mass value="2.125" />
+            <origin xyz="0 0 0"/>
+            <inertia ixx="0.00023125" ixy="0" ixz="0" iyy="0.00023125" iyz="0" izz="0.0003125"/>
+        </inertial>
+
+        <collision>
+            <origin xyz="0 0 0" rpy="-1.5708 0 0" />
+            <geometry>
+                <cylinder length="0.03" radius="0.025"/>
+            </geometry>
+        </collision>
+        <visual>
+            <origin xyz="0 0 0" rpy="-1.5708 0 0" />
+            <geometry>
+                <cylinder length="0.03" radius="0.025"/>
+            </geometry>
+            <material name="Red"/>
+        </visual>
+    </link>
+
+
+    <joint name="base_link_front_caster_joint" type="fixed">
+        <origin rpy="0 0 0" xyz="0.1 0 -0.15" />
+        <child link="front_caster" />
+        <parent link="base_link" />
+        <axis rpy="0 0 0" xyz="0 0 0" />
+        <joint_properties friction="0.0" />
+    </joint>
+    <link name="front_caster">
+        <inertial>
+            <mass value="0.125" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <inertia ixx="0.000003125" ixy="0" ixz="0" iyy="0.000003125" iyz="0" izz="0.000003125"/>
+        </inertial>
+
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <sphere radius="0.025"/>
+            </geometry>
+        </collision>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <sphere radius="0.025"/>
+            </geometry>
+            <material name="Green"/>
+        </visual>
+    </link>
+
+
+    <joint name="base_link_back_caster_joint" type="fixed">
+        <origin rpy="0 0 0" xyz="-0.1 0 -0.15" />
+        <child link="back_caster" />
+        <parent link="base_link" />
+        <axis rpy="0 0 0" xyz="0 0 0" />
+        <joint_properties friction="0.0" />
+    </joint>
+    <link name="back_caster">
+        <inertial>
+            <mass value="0.125" />
+            <origin xyz="-0.1 0 -0.15" rpy="0 0 0" />
+            <inertia ixx="0.000003125" ixy="0" ixz="0" iyy="0.000003125" iyz="0" izz="0.000003125"/>
+        </inertial>
+
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <sphere radius="0.025"/>
+            </geometry>
+        </collision>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <sphere radius="0.025"/>
+            </geometry>
+            <material name="Green"/>
+        </visual>
+    </link>
+
+
+    <joint name="base_link_front_laser_joint" type="fixed">
+        <origin rpy="0 0 0" xyz="0.25 0 0.075" />
+        <child link="front_laser" />
+        <parent link="base_link" />
+        <joint_properties friction="0.0" />
+    </joint>
+    <link name="front_laser">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="0.75" />
+            <inertia ixx="0.000252666666667" ixy="0" ixz="0" iyy="0.000252666666667" iyz="0" izz="0.0005"/>
+        </inertial>
+        <visual>
+            <origin xyz="3.14 0 0" rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.03" length="0.075"/>
+            </geometry>
+            <material name="Red"/>
+        </visual>
+        <collision>
+            <origin xyz="3.14 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.05" length="0.10"/>
+            </geometry>
+        </collision>
+    </link>
+
+</robot>
