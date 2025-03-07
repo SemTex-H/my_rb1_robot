@@ -20,7 +20,7 @@
     <!-- Robot spawner -->
     <arg name="model_name" default="my_robot"/>
     <arg name="x" default="-0.5"/>
-    <arg name="y" default="-1.5"/>
+    <arg name="y" default="-1.35"/>
     <arg name="z" default="0.5"/>
     
     <node name="mybot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
