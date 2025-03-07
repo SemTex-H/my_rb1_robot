@@ -50,27 +50,25 @@
 
     <!-- RIGHT WHEEL-->
     <joint name="base_link_right_wheel_joint" type="continuous">
-        <origin rpy="0 0 0" xyz="0 -0.2 -0.15" />
+        <origin rpy="0 -1.5708 0" xyz="0 -0.2 -0.15" />
         <child link="right_wheel" />
         <parent link="base_link" />
         <axis rpy="0 0 0" xyz="0 1 0" />
-        <limit effort="10000" velocity="1000" />
+        <joint_properties damping="0.1" friction="1.0" />
     </joint>
     <link name="right_wheel">
         <inertial>
-            <mass value="2.125" />
+            <mass value="1" />
             <origin xyz="0 0 0"/>
             <inertia ixx="0.00023125" ixy="0" ixz="0" iyy="0.00023125" iyz="0" izz="0.0003125"/>
         </inertial>
 
         <collision>
-            <origin xyz="0 0 0" rpy="-1.5708 0 0" />
             <geometry>
                 <cylinder length="0.03" radius="0.025"/>
             </geometry>
         </collision>
         <visual>
-            <origin xyz="0 0 0" rpy="-1.5708 0 0" />
             <geometry>
                 <cylinder length="0.03" radius="0.025"/>
             </geometry>
@@ -81,27 +79,25 @@
 
     <!-- LEFT WHEEL-->
     <joint name="base_link_left_wheel_joint" type="continuous">
-        <origin rpy="0 0 0" xyz="0 0.2 -0.15" />
+        <origin rpy="0 -1.5708 0" xyz="0 0.2 -0.15" />
         <child link="left_wheel" />
         <parent link="base_link" />
         <axis rpy="0 0 0" xyz="0 1 0" />
-        <limit effort="10000" velocity="1000" />
+        <joint_properties damping="0.1" friction="1.0" />
     </joint>
     <link name="left_wheel">
         <inertial>
-            <mass value="2.125" />
+            <mass value="1" />
             <origin xyz="0 0 0"/>
             <inertia ixx="0.00023125" ixy="0" ixz="0" iyy="0.00023125" iyz="0" izz="0.0003125"/>
         </inertial>
 
         <collision>
-            <origin xyz="0 0 0" rpy="-1.5708 0 0" />
             <geometry>
                 <cylinder length="0.03" radius="0.025"/>
             </geometry>
         </collision>
         <visual>
-            <origin xyz="0 0 0" rpy="-1.5708 0 0" />
             <geometry>
                 <cylinder length="0.03" radius="0.025"/>
             </geometry>
@@ -116,23 +112,21 @@
         <child link="front_caster" />
         <parent link="base_link" />
         <axis rpy="0 0 0" xyz="0 0 0" />
-        <joint_properties friction="0.0" />
+        <joint_properties damping="1.0" friction="0.1" />
     </joint>
     <link name="front_caster">
         <inertial>
             <mass value="0.125" />
-            <origin xyz="0 0 0" rpy="0 0 0" />
+            <origin xyz="0.1 0 -0.15" rpy="0 0 0" />
             <inertia ixx="0.000003125" ixy="0" ixz="0" iyy="0.000003125" iyz="0" izz="0.000003125"/>
         </inertial>
 
         <collision>
-            <origin rpy="0 0 0" xyz="0 0 0" />
             <geometry>
                 <sphere radius="0.025"/>
             </geometry>
         </collision>
         <visual>
-            <origin rpy="0 0 0" xyz="0 0 0" />
             <geometry>
                 <sphere radius="0.025"/>
             </geometry>
@@ -147,7 +141,7 @@
         <child link="back_caster" />
         <parent link="base_link" />
         <axis rpy="0 0 0" xyz="0 0 0" />
-        <joint_properties friction="0.0" />
+        <joint_properties damping="1.0" friction="0.1" />
     </joint>
     <link name="back_caster">
         <inertial>
@@ -157,13 +151,11 @@
         </inertial>
 
         <collision>
-            <origin rpy="0 0 0" xyz="0 0 0" />
             <geometry>
                 <sphere radius="0.025"/>
             </geometry>
         </collision>
         <visual>
-            <origin rpy="0 0 0" xyz="0 0 0" />
             <geometry>
                 <sphere radius="0.025"/>
             </geometry>
@@ -177,7 +169,7 @@
         <origin rpy="0 0 0" xyz="0.25 0 0.075" />
         <child link="front_laser" />
         <parent link="base_link" />
-        <joint_properties friction="0.0" />
+        <joint_properties friction="0.01" />
     </joint>
     <link name="front_laser">
         <inertial>
@@ -221,6 +213,12 @@
     </gazebo>
     <gazebo reference="front_laser">
         <material>Gazebo/Yellow</material>
+    </gazebo>
+    <gazebo reference="front_caster">
+        <preserveFixedJoint>true</preserveFixedJoint>
+    </gazebo>    
+    <gazebo reference="back_caster">
+        <preserveFixedJoint>true</preserveFixedJoint>
     </gazebo>
 
 
